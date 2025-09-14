@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Pizza Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main id="app-root">
+
+        <section id="builder" class="page">
+            <div class="builder-container">
+                <div class="pizza-preview">
+                    <h1>Create Your Pizza</h1>
+                    <div id="pizza-container">
+                        <img src="images/base.png" alt="Pizza Base" class="pizza-base">
+                        </div>
+                </div>
+
+                <div class="controls-summary">
+                    <h2>Choose Toppings</h2>
+                    <div class="topping-options" id="topping-controls">
+                        </div>
+                    
+                    <div class="summary">
+                        <h3>Your Order</h3>
+                        <ul id="summary-list">
+                           <li>Base Pizza - ₹150.00</li>
+                        </ul>
+                        <hr>
+                        <div class="total">
+                            <strong>TOTAL:</strong>
+                            <strong id="total-price">₹150.00</strong>
+                        </div>
+                    </div>
+                    <a href="#checkout" class="btn-primary" id="checkout-btn">Proceed to Checkout</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="checkout" class="page hidden">
+            <div class="card checkout-card">
+                <h2>Checkout</h2>
+                <div class="progress-bar">
+                    <div class="progress-step active" data-step="1">Details</div>
+                    <div class="progress-step" data-step="2">Address</div>
+                    <div class="progress-step" data-step="3">Payment</div>
+                </div>
+
+                <form id="checkout-form" novalidate>
+                    <div class="form-step active" data-step="1">
+                        <h4>Personal Details</h4>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                            <span class="inline-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number (10 digits)</label>
+                            <input type="tel" id="phone" required>
+                            <span class="inline-error"></span>
+                        </div>
+                        <button type="button" class="btn-next">Next &rarr;</button>
+                    </div>
+
+                    <div class="form-step" data-step="2">
+                        <h4>Delivery Address</h4>
+                        <div class="form-group">
+                            <label for="address">Address Line 1</label>
+                            <input type="text" id="address" required>
+                            <span class="inline-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="pincode">Pincode (Guwahati)</label>
+                            <input type="text" id="pincode" required>
+                            <span class="inline-error"></span>
+                        </div>
+                        <button type="button" class="btn-prev">&larr; Previous</button>
+                        <button type="button" class="btn-next">Next &rarr;</button>
+                    </div>
+
+                    <div class="form-step" data-step="3">
+                        <h4>Payment Details</h4>
+                        <div class="form-group">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" placeholder="xxxx xxxx xxxx xxxx" required>
+                            <span class="inline-error"></span>
+                        </div>
+                        <div class="form-group-inline">
+                            <div class="form-group">
+                                <label for="expiry">Expiry (MM/YY)</label>
+                                <input type="text" id="expiry" placeholder="MM/YY" required>
+                                <span class="inline-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123" required>
+                                <span class="inline-error"></span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-prev">&larr; Previous</button>
+                        <button type="submit" class="btn-primary">Place Order</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section id="confirmation" class="page hidden">
+            <div class="card confirmation-card">
+                <h2>Thank You! 🎉</h2>
+                <p>Your delicious pizza is on its way, <strong id="customer-name"></strong>!</p>
+                <h3>Order Summary:</h3>
+                <div id="final-summary"></div>
+                <a href="#builder" class="btn-primary" id="new-order-btn">Start a New Order</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
